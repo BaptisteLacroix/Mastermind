@@ -1,0 +1,27 @@
+Code :
+
+
+chiffreJC = int(input("Couleur " + str(i) + " : "))
+# tant que le chiffre n'est pas entre 1 et 8
+while chiffreJC <=1 and chiffreJC >=8:
+    chiffreJC = int(input("Couleur " + str(i) + " : "))
+    
+
+
+Trace :
+
+
+boucle 1 : 
+	saisie : 10
+	on continue
+	
+boucle 2 : 
+	saisie : -1
+	on continue
+
+boucle 3 : 
+	saisie : 5
+	sortie de boucle
+
+on ajoute 5 à la liste
+

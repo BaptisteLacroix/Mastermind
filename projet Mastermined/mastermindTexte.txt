@@ -1,0 +1,46 @@
+Au début j'importe le module randint pour la suite du programme
+et le module deepcopy.
+
+Nous allons faire dans cette ordre les programmes suivants:
+
+-Nous allons créer la fonction qui va générer une combinaison aléatoire.
+
+-Nous allons créer une fonction qui va demander la combinaison à l'utilisateur,
+ avec 12 essaies maximum.
+
+-Nous allons créer une fonction qui va comparer la combinaison du Joueur
+ avec celle de l'ordi.
+
+-Nous allons créer une fonction qui affiche le nombre de chiffres
+ bien placé ou mal placé (* noir bien placé ou 'o' blanc mal placé)
+
+-Enfin nous allons créer la fonction "main" qui va s'occuper 
+ de lancer toute les fonctions.
+
+1-Dans la première fonction nous allons générer la combinaison de l'ordi
+  Nous créons une liste ensuite on fait une boucle qui va tourner 4 fois
+  ensuite on créé une variable qui va générer un chiffre entre 1 et 8 que l'on ajoute dans la liste
+  combinaisonIA
+
+2-Dans la fonction combinaisonJoueur, comme le nom l'indique on va créer une liste
+  dans laquelle on va ajouter un chiffre différent ou non 4 fois grace à la boucle
+  le joueur va insérer un chiffre compris entre 1 et 8 dans la variable chiffreJC si
+  le chiffre n'est pas compris entre 1 et 8 le chiffre ne sera pas ajouté à la liste
+  et la question sera reposé.
+
+3-Dans la fonction vérification on va vérifier les listes de l'ordi par rapport à celle du joueur
+  on créé 2 liste une noir et une blanche.
+  avec un if pour vérifier si la combinaison du joueur et la meme que celle de l'ordi
+  si elle est la meme elle affichera " Vous avez trouvé la bonne combinaison "
+  sinon elle vérifira si un chiffre est bien placé au même endroit dans les deux listes 
+  elle le mettra dans la liste noir,
+  si un chiffre est mal placé mais qu'il est dans l'autre liste on le mettra dans la liste blanche
+  ensuite on met le nombre de "*" qui corrrespond au nombre de chiffres bien placé et la même chose
+  pour les chiffres mal placé mais avec un "o" cette fois.
+
+4-Dans la dernière fonction "main" elle va faire fonctionner toute les fonctions on va créer
+  3 variables qui correspondent aux 3 fonctions pour que la fonction main connaissent les 3 autres fonctions
+  puis on va faire une boucle qui va faire en sorte de faire 12 essaies au joueur
+  si il réussis il va marquer le nombre d'essais et si il rate il va marquer Vous avez perdu
+
+Et tout a la fin on appelle la fonction main pour lancer le programme
