@@ -21,7 +21,7 @@ def generer_combinaison():
     for _ in range(1, 5):
         chiffreAlea = randint(1, 8)
         combinaisonIA.append(chiffreAlea)
-    print("Combinaison IA : ", combinaisonIA)
+    # print("Combinaison IA : ", combinaisonIA)
     return combinaisonIA
 
 
@@ -118,7 +118,7 @@ def couleur_chiffres(chiffre):
     """
 
 def main():
-    essaie = "essaie numéro :"
+    essaie = "essaie numéro : "
     print(Fore.MAGENTA)
     tprint("Bienvenue    dans    le    Mastermind    de    Baptiste.\n ")
     print(Style.RESET_ALL)
