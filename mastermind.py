@@ -1,6 +1,7 @@
 from random import randint
 from art import tprint
 from colorama import Fore, Style
+from typing import List, Dict
 
 """
 - générer une combinaison d'entiers aléatoire.
@@ -16,8 +17,9 @@ def generer_combinaison():
     """
     elle génère 4 chiffres aléatoires qu'elle ajoute à la liste combinaisonIA.
     qu'elle retourne.
+    :return: liste de l'ordi
     """
-    combinaisonIA = []
+    combinaisonIA: List[int] = []
     for _ in range(1, 5):
         chiffreAlea = randint(1, 8)
         combinaisonIA.append(chiffreAlea)
@@ -25,14 +27,16 @@ def generer_combinaison():
     return combinaisonIA
 
 
-def combinaison_joueur(combinaisonOrdi):
+def combinaison_joueur(combinaisonOrdi: List[int]) -> List[int]:
     """
     elle demande 4 chiffres que le joueur va donner puis la fonction va les ajouter dans 
     une liste qu'elle retourne.
+    :param combinaisonOrdi: liste de l'ordi
+    :return: liste du joueur
     """
-    combinaisonJC = []
+    combinaisonJC: List[int] = []
     for i in range(1, 5):
-        chiffreJC = test_input(i)
+        chiffreJC: int = test_input(i)
         # tant que le chiffre n'est pas entre 1 et 8
         # Si le joueur entre le nombre "666" alors le code se lancera
         if chiffreJC == 666:
@@ -40,15 +44,20 @@ def combinaison_joueur(combinaisonOrdi):
             tprint(str(combinaisonOrdi))
             print(Style.RESET_ALL)
         while chiffreJC < 1 or chiffreJC > 8:
-            chiffreJC = test_input(i)
+            chiffreJC: int = test_input(i)
         combinaisonJC.append(chiffreJC)
     return combinaisonJC
 
 
-def test_input(i):
+def test_input(i: int) -> int:
+    """
+    la fonction va demander à l'utilisateur de rentrer un chiffre.
+    :param i: numéro du chiffre
+    :return: chiffre
+    """
     while True:
         try:
-            chiffreJC = int(input("Couleur " + str(i) + " : "))
+            chiffreJC: int = int(input("Couleur " + str(i) + " : "))
             break
         except ValueError:
             print(Fore.RED)
@@ -57,46 +66,60 @@ def test_input(i):
     return chiffreJC
 
 
-def verification(combinaisonIA, combinaisonJC):
-    """ 
+def verification(combinaisonIA: List[int], combinaisonJC: List[int]) -> None:
+    """
     la fontion va vérifier si les chiffres du joueur correspondent
     aux chiffres de l'ordinateur.
 
     la fonction va vérifier si un des chiffres du joueur se situe bien dans la liste.
     Si le chiffre se trouve dans la liste de l'ordi on va ajouter le chiffre à la listeBlanc.
+    :param combinaisonIA: liste de l'ordi
+    :param combinaisonJC: liste du joueur
+    :return: None
     """
-    noir = '*'
-    blanc = 'o'
-    listeNoir = []  # contiendra les chiffres bien placés
-    listeBlanc = []  # contiendra les chiffres mal placés
+
+    noir: str = '*'
+    blanc: str = 'o'
+    dict_nbr_elemets_BOT: Dict[str, int] = {}  # {numéro, nombre de fois qu'il est présent} pour le BOT
+    dict_nbr_elemets_JC: Dict[str, int] = {}  # {numéro, nombre de fois qu'il est présent} pour le Joueur
+    # compte le nombre de fois que l'élément est présent dans la liste
+    for element in combinaisonIA:
+        if element in dict_nbr_elemets_BOT:
+            dict_nbr_elemets_BOT[str(element)] += 1
+        else:
+            dict_nbr_elemets_BOT[str(element)] = 1
+    liste_noir: List[int] = []  # chiffre bien placé
+    liste_blanc: List[int] = []  # contiendra les chiffres mal placés
 
     if combinaisonJC == combinaisonIA:
         # si la liste choisie est la meme que celle de l'ordi alors :
         print(Fore.GREEN)
         tprint("Vous    avez    trouve    la    bonne    combinaison    !")
         print(Style.RESET_ALL)
-        return
+        print("La  solution  etait  :  " + " ".join(str(combinaisonIA)))
     else:
         for i in range(4):
             # pour chaque chiffre choisi par le joueur
             if combinaisonJC[i] == combinaisonIA[i]:
                 # si le chiffre du joueur est au meme endroit dans la liste de l'ordi
-                listeNoir.append(combinaisonJC[i])  # ajoute le chiffre a la listeNoir
-        for i in range(4):
-            if combinaisonJC[i] in combinaisonIA and combinaisonJC[i] not in listeNoir:
-                # ieme element de combinaisonJC dans combinaisonIA
-                # sinon si le chiffre du joueur est dans la liste de l'ordi mais mal placé
-                listeBlanc.append(combinaisonJC[i])
+                liste_noir.append(combinaisonJC[i])  # ajoute le chiffre a la listeNoir
+                # On compte +1 dans le dictionnaire pour le chiffre trouvé
+                if combinaisonJC[i] in dict_nbr_elemets_JC:
+                    dict_nbr_elemets_JC[str(combinaisonJC[i])] += 1
+                else:
+                    dict_nbr_elemets_JC[str(combinaisonJC[i])] = 1
+        for j in range(4):
+            if combinaisonJC[j] in combinaisonIA and liste_noir.count(combinaisonJC[j]) < dict_nbr_elemets_BOT[
+                str(combinaisonJC[j])]:
+                # si le chiffre du joueur se trouve dans la liste de l'ordi
+                liste_blanc.append(combinaisonJC[j])  # ajoute le chiffre a la listeBlanc
 
-    listeNoir = len(listeNoir) * noir
-    listeBlanc = len(listeBlanc) * blanc
-    print(Fore.LIGHTMAGENTA_EX + "chiffre(s) bien placé(s) : ", listeNoir, Fore.YELLOW + " / chiffre(s) mal placé(s) : "
-          , listeBlanc + Style.RESET_ALL)
-    # print("chiffre utilisés : ")
-    # for i in combinaisonJC:
-        # couleur_chiffres(i)
+        taille_liste_noir = len(liste_noir) * noir
+        taille_liste_blanc = len(liste_blanc) * blanc
+        print(Fore.LIGHTMAGENTA_EX + "chiffre(s) bien placé(s) : ", taille_liste_noir, Fore.YELLOW +
+              " / chiffre(s) mal placé(s) : ", taille_liste_blanc + Style.RESET_ALL)
 
-    """
+
 def couleur_chiffres(chiffre):
     liste_chiffres = [1, 2, 3, 4, 5, 6, 7, 8]
     if chiffre == liste_chiffres[0]:
@@ -115,7 +138,7 @@ def couleur_chiffres(chiffre):
         print(Fore.YELLOW + str(liste_chiffres[6]) + Style.RESET_ALL)  # Jaune
     elif chiffre == liste_chiffres[7]:
         print(Fore.CYAN + str(liste_chiffres[7]) + Style.RESET_ALL)  # bleu ciel
-    """
+
 
 def main():
     essaie = "essaie numéro : "
@@ -147,4 +170,5 @@ def main():
         print(Style.RESET_ALL)
 
 
-main()
+if __name__ == "__main__":
+    main()
