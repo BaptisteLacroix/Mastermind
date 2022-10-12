@@ -1,15 +1,0 @@
-
-xpython:S117"\Rename this local variable "chiffreAlea" to match the regular expression ^[_a-z][a-z0-9_]*$.(ºİÛ’øÿÿÿÿ
-upython:S117"^Rename this local variable "combinaisonIA" to match the regular expression ^[_a-z][a-z0-9_]*$.(¹³…
-vpython:S117$"ZRename this local variable "chiffreJC" to match the regular expression ^[_a-z][a-z0-9_]*$.(ãÁüÿÿÿÿ
-zpython:S117""^Rename this local variable "combinaisonJC" to match the regular expression ^[_a-z][a-z0-9_]*$.(°æÓéıÿÿÿÿ
-wpython:S117"[Rename this parameter "combinaisonOrdi" to match the regular expression ^[_a-z][a-z0-9_]*$.(ñ¼ÆÂúÿÿÿÿ
-vpython:S1174"ZRename this local variable "chiffreJC" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ãıì£şÿÿÿÿ
-xpython:S117\"aRename this local variable "TaillelisteBlanc" to match the regular expression ^[_a-z][a-z0-9_]*$.(¶±’ú
-wpython:S117["`Rename this local variable "TaillelisteNoir" to match the regular expression ^[_a-z][a-z0-9_]*$.(¾ˆ­â
-upython:S117="YRename this parameter "combinaisonIA" to match the regular expression ^[_a-z][a-z0-9_]*$.(í‡ æşÿÿÿÿ
-upython:S117="YRename this parameter "combinaisonJC" to match the regular expression ^[_a-z][a-z0-9_]*$.(í‡ æşÿÿÿÿ
-wpython:S117H"[Rename this local variable "listeBlanc" to match the regular expression ^[_a-z][a-z0-9_]*$.(¯‚àûÿÿÿÿ
-}python:S117G"ZRename this local variable "listeNoir" to match the regular expression ^[_a-z][a-z0-9_]*$.(µ·áÂşÿÿÿÿ8ï°íÛ¼0
-wpython:S117|"`Rename this local variable "combinaisonOrdi" to match the regular expression ^[_a-z][a-z0-9_]*$.(õÌÈ÷
-ypython:S117}"bRename this local variable "combinaisonPlayer" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÀÁÈ¢
